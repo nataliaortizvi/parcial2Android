@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView preguntatx;
     private EditText puntajetx;
 
+    private Boolean puede = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +40,26 @@ public class MainActivity extends AppCompatActivity {
 
         okbt.setOnClickListener(
                 (v) -> {
-                    String p = puntajetx.getText().toString();
-                    int punt = Integer.parseInt(p);
 
-                    if(punt >= 0 && punt <= 10){
-                        DatabaseReference ref = db.getReference().child("preguntasDo/prom");
-                        Elpuntaje mipuntaje = new Elpuntaje(
-                                "1",
-                                punt
-                        );
+                    if(puede == true){
+                        String p = puntajetx.getText().toString();
+                        int punt = Integer.parseInt(p);
 
-                        ref.setValue(mipuntaje);
-                        puntajetx.setText("");
+                        if(punt >= 0 && punt <= 10){
+                            DatabaseReference ref = db.getReference().child("preguntasDo/prom");
+                            Elpuntaje mipuntaje = new Elpuntaje(
+                                    punt
+                            );
+
+                            ref.push().setValue(mipuntaje);
+                            Log.d("aaa",""+punt);
+                            punt = 0;
+                            puntajetx.setText("");
+                        }else{
+                            Toast.makeText(this, "Escriba un número entre 0 y 10", Toast.LENGTH_LONG).show();
+                        }
                     }else{
-                        Toast.makeText(this, "Escriba un número entre 0 y 10", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Espere a que haya una pregunta", Toast.LENGTH_LONG).show();
                     }
                 }
             );
@@ -64,16 +71,18 @@ public class MainActivity extends AppCompatActivity {
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot data) {
-                        Log.d("aaa",""+data.getValue());
+
                         if(data.getValue() == null){
                             preguntatx.setText("No hay pregunta");
+                            puede = false;
+                        }else{
+                            puede = true;
                         }
 
                         for (DataSnapshot child : data.getChildren()){
                             lapreguntaH pregunta = child.getValue(lapreguntaH.class);
 
                             preguntatx.setText(pregunta.getPregunta());
-
                         }
                     }
 
