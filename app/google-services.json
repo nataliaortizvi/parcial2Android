@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "971960058641",
+    "firebase_url": "https://parcial2-66671.firebaseio.com",
+    "project_id": "parcial2-66671",
+    "storage_bucket": "parcial2-66671.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971960058641:android:ffc0737b780e34804442b0",
+        "android_client_info": {
+          "package_name": "com.example.parcial2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971960058641-e7dtegnikag4nohv0fk9g5ji47j9626j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.parcial2",
+            "certificate_hash": "55c64b513ecc631a6082284fc737dd99f9ce89c0"
+          }
+        },
+        {
+          "client_id": "971960058641-6q0nr3vap9uqk0br6gr9bdnfsi99869r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAgNKInfHR_YQdWChbOVaqvfceKTR_epI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971960058641-6q0nr3vap9uqk0br6gr9bdnfsi99869r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
